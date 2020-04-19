@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data</title>
+  </head>
+  <body>
+    <ul>
+      <!--Armazena algumas informações ocultas para usuário e depois consegue acessar os elementos pelo atributo data-->
+      <li data-id="1" data-email="thaisa.santos@br.experian.com">
+        Thaisa Andrade
+      </li>
+      <li data-id="2" data-email="zaqueu.santos@br.experian.com">
+        Zaqueu Santos
+      </li>
+    </ul>
+    <script>
+      document.querySelectorAll("li").forEach((liEl) => {
+        console.log(liEl.dataset); //SELECIONA TODOS ELEMENTOS
+        // console.log(liEl.dataset.id); selecionar o elemento do data por ID
+        // console.log(liEl.dataset.email);selecionar o elemento do data por EMAIL
+      });
+    </script>
+  </body>
+</html>

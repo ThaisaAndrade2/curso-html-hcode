@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dropzone</title>
+  </head>
+  <style>
+    .caixa {
+      margin-bottom: 10px;
+      width: 100px;
+      height: 100px;
+      background-color: brown;
+    }
+    .drop {
+      margin-top: 20px;
+      width: 250px;
+      height: 250px;
+      border: 2px solid brown;
+    }
+    #c2 {
+      background-color: #d3d3d3;
+    }
+  </style>
+  <body>
+    <!--Armazena elemento arrastavél do Draggable-->
+    <div id="c1" class="caixa" draggable="true"></div>
+    <div id="c2" class="caixa" draggable="true"></div>
+
+    <div class="drop" dropzone="copy"></div>
+  </body>
+  <script>
+    const caixas = document.querySelectorAll(".caixa");
+    const dropzone = document.querySelector("[dropzone]");
+
+    caixas.forEach((caixaEl) => {
+      caixaEl.addEventListener("dragstart", (e) => {
+        e.dataTransfer.setData("Text", e.target.id);
+        console.log(e.target.id);
+      });
+    });
+
+    dropzone.addEventListener("dragover", (e) => {
+      e.preventDefault();
+    });
+
+    dropzone.addEventListener("drop", (e) => {
+      const id = e.dataTransfer.getData("Text");
+
+      const element = document.getElementById(id);
+      e.target.appendChild(element);
+    });
+  </script>
+</html>
